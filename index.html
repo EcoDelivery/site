@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoDelivery - Entregas sustentáveis rápidas e acessíveis com bicicletas e triciclos elétricos.">
+    <meta name="keywords" content="entregas sustentáveis, bicicletas, triciclos, ecologia, logística verde">
+    <title>EcoDelivery - O Futuro das Entregas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #f5f7f5; /* Branco suave com tom ecológico */
+            color: #1a3c34; /* Verde escuro para texto */
+            overflow-x: hidden; 
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9); /* Fundo branco translúcido */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 128, 0, 0.1);
+        }
+        .navbar .logo { font-family: 'Orbitron', sans-serif; font-size: 1.8em; color: #00cc66; /* Verde médio */ }
+        .navbar ul { display: flex; list-style: none; }
+        .navbar ul li { margin: 0 20px; }
+        .navbar ul li a { color: #1a3c34; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .navbar ul li a:hover { color: #00cc66; text-shadow: 0 0 5px rgba(0, 204, 102, 0.5); }
+
+        /* Hero */
+        .hero { 
+            height: 100vh; 
+            text-align: center; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: url('natureza.webp') no-repeat center center/cover;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6); /* Camada branca semi-transparente para melhorar a legibilidade */
+            z-index: 1;
+        }
+        .hero .content { 
+            z-index: 2; 
+            position: relative;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5em;
+            color: #00cc66;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra mais forte para contraste */
+        }
+        .hero p { 
+            font-size: 1.8em; 
+            margin: 20px 0; 
+            color: #1a3c34; 
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Sombra para o texto menor */
+        }
+        .hero .cta-button {
+            background: #00cc66;
+            color: #fff;
+            padding: 15px 50px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(0, 204, 102, 0.5);
+        }
+        .hero .cta-button:hover {
+            transform: scale(1.15);
+            background: #00994d; /* Verde mais escuro */
+            box-shadow: 0 0 30px rgba(0, 153, 77, 0.7);
+        }
+
+        /* Sobre */
+        .sobre { 
+            background: #fff; 
+            padding: 80px 20px; 
+            text-align: center; 
+        }
+        h2 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 3em; 
+            color: #00cc66; 
+            margin-bottom: 40px; 
+        }
+        .sobre-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        .sobre-text {
+            flex: 1;
+            min-width: 500px;
+            text-align: left;
+        }
+        .sobre-text h3 {
+            font-size: 1.8em;
+            color: #1a3c34;
+            margin-bottom: 15px;
+        }
+        .sobre-text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #1a3c34;
+            margin-bottom: 20px;
+        }
+        .sobre-image {
+            flex: 1;
+            min-width: 500px;
+            text-align: center;
+        }
+        .sobre-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 128, 0, 0.1);
+        }
+
+        /* Serviços */
+        .servicos { 
+            background: #e6f0ea; 
+            padding: 80px 20px; 
+            text-align: center; /* Centraliza o título */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%; /* Garante que o grid ocupe a largura disponível */
+            margin: 0 auto; /* Centraliza o grid */
+        }
+        .service-box {
+            padding: 30px;
+            background: #fff;
+            border-radius: 20px;
+            transition: transform 0.4s;
+            box-shadow: 0 5px 15px rgba(0, 128, 0, 0.1);
+            text-align: center; /* Centraliza o conteúdo dentro de cada box */
+        }
+        .service-box:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0, 128, 0, 0.2); }
+        .service-box i { font-size: 3em; color: #00cc66; margin-bottom: 20px; }
+        .service-box h3 { font-size: 1.5em; color: #1a3c34; }
+        .service-box p { font-size: 1em; color: #1a3c34; }
+
+        /* Depoimentos */
+        .depoimentos {
+            background: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+        .depoimento-box {
+            background: #f5f7f5;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 128, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        .depoimento-box p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #1a3c34;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .depoimento-box h4 {
+            font-size: 1.3em;
+            color: #00cc66;
+        }
+        .depoimento-box span {
+            font-size: 1em;
+            color: #1a3c34;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #00cc66;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5em;
+            transition: background 0.3s;
+        }
+        .carousel-button:hover {
+            background: #00994d;
+        }
+        .carousel-button.prev { left: 10px; }
+        .carousel-button.next { right: 10px; }
+
+        /* CTA */
+        .cta-section {
+            background: #00cc66;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta-section h2 { color: #fff; text-shadow: none; }
+        .cta-form {
+            max-width: 600px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 128, 0, 0.2);
+        }
+        .cta-form input, .cta-form select {
+            padding: 15px;
+            font-size: 1.2em;
+            border: 1px solid #00cc66;
+            border-radius: 10px;
+            background: #f5f7f5;
+            color: #1a3c34;
+        }
+        .cta-form select { appearance: none; cursor: pointer; }
+        .cta-form button {
+            padding: 15px;
+            font-size: 1.5em;
+            background: #00994d;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .cta-form button:hover {
+            background: #00cc66;
+            box-shadow: 0 0 20px rgba(0, 204, 102, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            font-size: 0.9em;
+            color: #1a3c34;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 -2px 10px rgba(0, 128, 0, 0.1);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .hero p { font-size: 1.4em; }
+            .services { grid-template-columns: 1fr; }
+            .cta-form { padding: 20px; }
+            .sobre, .servicos, .depoimentos, .cta-section { padding: 60px 15px; }
+            .navbar { padding: 15px; }
+            .sobre-content { flex-direction: column; }
+            .sobre-text, .sobre-image { min-width: 100%; text-align: center; }
+            .carousel-button { padding: 8px; font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">EcoDelivery</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#cta">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="content">
+            <h1>O Futuro das Entregas</h1>
+            <p>Sustentável. Rápido. Ecológico.</p>
+            <a href="#cta" class="cta-button">Junte-se Agora</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="sobre" id="sobre">
+        <h2>Sobre Nós</h2>
+        <div class="sobre-content">
+            <div class="sobre-text">
+                <h3>Transformando a Logística com Sustentabilidade</h3>
+                <p>Na EcoDelivery, acreditamos que o futuro das entregas pode ser verde e eficiente. Utilizamos bicicletas e triciclos elétricos de última geração para oferecer um serviço de logística que não apenas reduz a pegada de carbono, mas também garante rapidez e confiabilidade para nossos clientes.</p>
+                <p>Nosso compromisso vai além das entregas: promovemos uma cultura de sustentabilidade, incentivando empresas e indivíduos a adotarem práticas mais ecológicas. Com tecnologia inovadora e uma equipe apaixonada, estamos redefinindo o que significa ser uma empresa de logística no século XXI.</p>
+            </div>
+            <div class="sobre-image">
+                <img src="1700389606144.jpg" alt="Ilustração de logística sustentável">
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="servicos" id="servicos">
+        <h2>Serviços</h2>
+        <div class="services">
+            <div class="service-box">
+                <i class="fas fa-bicycle"></i>
+                <h3>Entregas Sustentáveis</h3>
+                <p>Rápidas e sem emissão de carbono.</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-tools"></i>
+                <h3>Aluguel de Bicicletas</h3>
+                <p>Para empresas e indivíduos.</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-building"></i>
+                <h3>Planos Corporativos</h3>
+                <p>Soluções personalizadas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="depoimentos" id="depoimentos">
+        <h2>Depoimentos</h2>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <div class="depoimento-box">
+                        <p>"A EcoDelivery transformou a forma como minha empresa faz entregas! Rápido, confiável e ainda ajuda o meio ambiente. Não poderia estar mais satisfeito!"</p>
+                        <h4>Lucas Almeida</h4>
+                        <span>São Paulo, SP</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="depoimento-box">
+                        <p>"Adorei o serviço de aluguel de bicicletas! Além de prático, é uma ótima forma de contribuir para um planeta mais verde."</p>
+                        <h4>Camila Oliveira</h4>
+                        <span>Curitiba, PR</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="depoimento-box">
+                        <p>"O plano corporativo da EcoDelivery foi perfeito para o meu negócio. Entregas sustentáveis e um atendimento impecável!"</p>
+                        <h4>Rafael Costa</h4>
+                        <span>Porto Alegre, RS</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="depoimento-box">
+                        <p>"Nunca pensei que entregas ecológicas poderiam ser tão eficientes. A EcoDelivery superou todas as minhas expectativas!"</p>
+                        <h4>Juliana Mendes</h4>
+                        <span>Recife, PE</span>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+        <h2>Junte-se à Revolução</h2>
+        <form class="cta-form" id="leadForm">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="email" placeholder="Seu e-mail" required>
+            <input type="tel" placeholder="Seu telefone" required pattern="[0-9]{10,11}">
+            <select name="state" required>
+                <option value="" disabled selected>Selecione seu estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 EcoDelivery - O Futuro é Verde.</p>
+    </footer>
+
+    <script>
+        // Validação do formulário
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulário enviado com sucesso!');
+            this.reset();
+        });
+
+        // Navegação suave via links do navbar
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Carrossel de Depoimentos
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+
+        let index = 0;
+        const totalItems = items.length;
+
+        // Função para avançar automaticamente
+        function nextSlide() {
+            index = (index + 1) % totalItems;
+            updateCarousel();
+        }
+
+        // Função para atualizar o carrossel
+        function updateCarousel() {
+            const offset = -index * 100;
+            track.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Botões manuais
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+        });
+        prevButton.addEventListener('click', () => {
+            index = (index - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+
+        // Avançar automaticamente a cada 3 segundos
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>
